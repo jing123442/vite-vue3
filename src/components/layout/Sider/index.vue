@@ -17,13 +17,14 @@
 import { defineComponent, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { permissionStore } from '@/store/modules/permission'
+import { appStore } from '@/store/modules/app'
 import type { RouteRecordRaw } from 'vue-router'
 import SiderTree from './SiderTree.vue'
 
 export default defineComponent({
   name: 'Sider',
   setup() {
-    console.log(permissionStore)
+   const collapsed = computed(() => appStore.collapsed)
    const routes = computed((): RouteRecordRaw[] => {
       return permissionStore.routers
     })
@@ -41,6 +42,7 @@ export default defineComponent({
       push(path)
     }
     return {
+      collapsed,
       routes,
       activeMenu,
       selectMenu
@@ -54,6 +56,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .siderbar-container {
- 
+  height:100%;
+
 }
 </style>

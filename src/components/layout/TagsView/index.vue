@@ -39,12 +39,12 @@
 
 <script lang="ts">
 import ScrollPane from './ScrollPane.vue'
-import path from 'path'
 import { defineComponent, ref, unref, computed, watch, onMounted, nextTick } from 'vue'
 import { tagsViewStore } from '@/store/modules/tagsView.ts'
 import { permissionStore } from '@/store/modules/permission.ts'
 import { useRouter } from 'vue-router'
 import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
+import {concactPath} from '@/utils/index.ts'
 
 export default defineComponent({
   name: 'TagsView',
@@ -77,7 +77,8 @@ export default defineComponent({
       let tags: any[] = []
       routes.forEach((route: RouteRecordRaw) => {
         if (route.meta && route.meta.affix) {
-          const tagPath = path.resolve(basePath, route.path)
+          // const tagPath = path.resolve(basePath, route.path)
+          const tagPath = concactPath(basePath + route.path)
           tags.push({
             fullPath: tagPath,
             path: tagPath,
@@ -252,6 +253,7 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+@tagsViewHeight: 40px;
 .tags-view-container {
   height: @tagsViewHeight;
   width: 100%;
@@ -354,8 +356,8 @@ export default defineComponent({
     }
   }
 }
-@{deep}(.scrollbar__view) {
-  height: @tagsViewHeight;
-  line-height: @tagsViewHeight;
-}
+// @{deep}(.scrollbar__view) {
+//   height: @tagsViewHeight;
+//   line-height: @tagsViewHeight;
+// }
 </style>

@@ -2,8 +2,8 @@
   <div v-if="!item.meta.hidden">
     <el-submenu v-if="item.children" :index="item.path">
       <template #title>
-        <i v-if="icon && icon.includes('el-icon')" :class="[icon, 'sub-el-icon', 'anticon']" />
-        <svg-icon v-else-if="icon" :icon-class="icon" class="anticon" />
+        <i v-if="item.meta.icon && item.meta.icon.includes('el-icon')" :class="[item.meta.icon, 'sub-el-icon', 'anticon']" />
+        <!-- <svg-icon v-else-if="item.meta.icon" :icon-class="item.meta.icon" class="anticon" /> -->
         <slot name="title">
           <span class="anticon-item">{{ item.meta.title }}</span>
         </slot>
@@ -18,8 +18,8 @@
 
     <el-menu-item v-else :index="`${basePath ? basePath + '/' : ''}` + item.path">
       <template #title>
-        <i v-if="icon && icon.includes('el-icon')" :class="[icon, 'sub-el-icon', 'anticon']" />
-        <svg-icon v-else-if="icon" :icon-class="icon" class="anticon" />
+        <i v-if="item.meta.icon && item.meta.icon.includes('el-icon')" :class="[item.meta.icon, 'sub-el-icon', 'anticon']" />
+        <!-- <svg-icon v-else-if="item.meta.icon" :icon-class="item.meta.icon" class="anticon" /> -->
         <slot name="title">
           <span class="anticon-item">{{ item.meta.title }}</span>
         </slot>

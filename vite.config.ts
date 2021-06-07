@@ -19,8 +19,7 @@ export default defineConfig({
           },
         }
       ]
-    })],
-    
+    })], 
   resolve: {
     alias: {
       '@': resolve(__dirname,'src') 
@@ -42,5 +41,15 @@ export default defineConfig({
     //     rewrite: (path) => path.replace('/api/', '/')
     //   }
     // }
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          hack: `true; @import (reference) "${resolve('src/styles/index.less')}";`,
+        },
+        javascriptEnabled: true,
+      }
+    }
+  },
 })

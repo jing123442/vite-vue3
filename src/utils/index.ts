@@ -137,4 +137,7 @@ export function getRoute(route: RouteLocationNormalized): RouteLocationNormalize
 //       return fmt
 //     }
 //   }
-  
+export function concactPath (basePath:string, subPath: string):string {
+  const fullPath = basePath + subPath
+  return fullPath
+}
