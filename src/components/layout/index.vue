@@ -15,9 +15,8 @@
         <BreadCrumb />
         <UserInfo />
       </div>
-     
-  
       <TagsView />
+      <AppMain/>
     </div>
 
   </div>
@@ -26,11 +25,12 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { appStore } from '@/store/modules/app'
-import Sider from './Sider/index.vue'
+import Sider from './SiderNew/index.vue'
 import TagsView from './TagsView/index.vue'
 import BreadCrumb from './BreadCrumb/index.vue'
 import Hamburger from './Hamburger/index.vue'
 import UserInfo from './UserInfo/index.vue'
+import AppMain from './AppMain.vue'
 export default defineComponent({
   setup() {
      const collapsed = computed(() => appStore.collapsed)
@@ -48,7 +48,8 @@ export default defineComponent({
     TagsView,
     BreadCrumb,
     Hamburger,
-    UserInfo
+    UserInfo,
+    AppMain
 
   }
 })

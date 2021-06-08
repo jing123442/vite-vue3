@@ -5,7 +5,7 @@
         <i v-if="item.meta.icon && item.meta.icon.includes('el-icon')" :class="[item.meta.icon, 'sub-el-icon', 'anticon']" />
         <!-- <svg-icon v-else-if="item.meta.icon" :icon-class="item.meta.icon" class="anticon" /> -->
         <slot name="title">
-          <span class="anticon-item">{{ item.meta.title }}</span>
+          <span class="anticon-item">{{ item.meta.title +'000'}}</span>
         </slot>
       </template>
       <SiderTree
@@ -21,7 +21,7 @@
         <i v-if="item.meta.icon && item.meta.icon.includes('el-icon')" :class="[item.meta.icon, 'sub-el-icon', 'anticon']" />
         <!-- <svg-icon v-else-if="item.meta.icon" :icon-class="item.meta.icon" class="anticon" /> -->
         <slot name="title">
-          <span class="anticon-item">{{ item.meta.title }}</span>
+          <span class="anticon-item">{{ item.meta.title + '111'}}</span>
         </slot>
       </template>
     </el-menu-item>

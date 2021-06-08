@@ -4,6 +4,7 @@ import store from './store/index'
 import router from './router/index'
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css';
+import '@/styles/reset.css' 
 import '@/styles/index.less'
 const app = createApp(App)
 

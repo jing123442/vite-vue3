@@ -4,7 +4,6 @@
       <el-menu
         :default-active="activeMenu"
         :collapse="collapsed"
-        :default-openeds="false"
         @select="selectMenu"
       >
         <SiderTree v-for="route in routes" :key="route.path" :item="route" :base="route.path" />
@@ -55,6 +54,7 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+@import  '../../../styles/sider.less';
 .siderbar-container {
   height:100%;
 
