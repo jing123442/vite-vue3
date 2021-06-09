@@ -1,109 +1,22 @@
-@menuText: #818896;
-@menuActiveText: #b8bfce;
-@menuActiveBg: #2d8cf0;
-@menuBg: #3c4362;
-
-@subMenuBg: #445774;
-@subMenuHover: #2d8cf0;
-// @subMenuHoverShadow:0px 0px 10px rgba(22, 199, 255, 0.5);
-@subMenuHoverShadow:0px 0px 10px #fff;
-@subMenuActiveText: #fff;
-@linerBg:linear-gradient(0d68fc,0099fe);
-@menuWidth: 200px;
-@menuMinWidth: 64px;
-
-@keyframes swing {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(10deg);
-  }
-  30% {
-    transform: rotate(0deg);
-  }
-  40% {
-    transform: rotate(-10deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  60% {
-    transform: rotate(5deg);
-  }
-  70% {
-    transform: rotate(0deg);
-  }
-  80% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes sonar {
-  0% {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
+@shadow: .3rem .3rem .6rem #c8d0e7, -.2rem -.2rem .5rem #FFFFFF;
 .el-menu{
-  box-shadow:2px 0 6px rgb(0 21 41 / 35%);
+  border: none;
+  padding:10px;
 }
-.el-scrollbar__view,.el-menu{
-  background:@menuBg;
-}
-.el-menu-item,.el-submenu__title{
+.el-menu-item{
+  transition: all 0.5s ease;
   color:@menuText;
+  border-radius: 1rem;
+  font-size:18px;
 }
-.sub-el-icon{
-  background: #3a3f48;
-  margin-right: 15px!important;
-  font-size: 12px;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  border-radius: 4px;
+.el-menu-item.is-active {
+  color: #fff;
+  background: linear-gradient(to right bottom,#0133ff,#61a8f1)
 }
-
-.el-menu-item:hover,.el-submenu__title:hover{
-  color:@subMenuActiveText;
-  background:@menuBg;
-  .sub-el-icon{
-    animation: swing ease-in-out 0.5s 1 alternate;
-    color:@subMenuHover;
-    text-shadow:@subMenuHoverShadow;
-  }
-}
-.el-menu-item.is-active{
-  background:@linerBg;
-  color: @subMenuHover;
-}
-.el-menu--inline {
-  color:#818896;
-  .el-menu-item{
-    background:@subMenuBg;
-  }
-  .el-menu-item:before{
-    content: "\f111";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 400;
-    font-style: normal;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-right: 10px;
-    font-size: 8px;
-  }
-}
-.el-menu--collapse{
-
+.el-menu-item:focus, .el-menu-item:hover {
+  box-shadow: @shadow;
+  z-index:10;
+  background:#fff;
+  // border-radius: 1rem;
+  color:@menuActiveBg;
 }

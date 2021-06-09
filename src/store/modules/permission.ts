@@ -66,28 +66,78 @@ class Permission extends VuexModule implements PermissionState {
   }
 }
 
- function generateRoutes(list:AppRouteRecordRaw[], basePath: string): AppRouteRecordRaw[] {
-  const res: AppRouteRecordRaw[] = []
-  const permissionList = wsCache.get(appStore.userInfo).routes
-  let data = <AppRouteRecordRaw>{}
+//  function generateRoutes(list:AppRouteRecordRaw[], basePath: string): AppRouteRecordRaw[] {
+//   const res: AppRouteRecordRaw[] = []
+//   const permissionList = wsCache.get(appStore.userInfo).routes
+//   let data = <AppRouteRecordRaw>{}
   
-  for (const item of list) {
-    if (item.children) {
-      data.children = generateRoutes(item.children, item.path)
-      if (data.children) {
-        data = Object.assign({},item,data)
-        res.push(data)
-      }
-    } else {
-      const finalPath = basePath? basePath + '/'+ item.path : item.path
-      permissionList.forEach((val:AppRouteRecordRaw) => {
-        console.log(val.path === finalPath,finalPath);
-        if (val.path === finalPath) {
-          res.push(item)
+//   for (const item of list) {
+//     if (item.children) {
+//       data.children = generateRoutes(item.children, item.path)
+//       if (data.children) {
+//         data = Object.assign({},item,data)
+//         res.push(data)
+//       }
+//     } else {
+//       const finalPath = basePath? basePath + '/'+ item.path : item.path
+//       permissionList.forEach((val:AppRouteRecordRaw) => {
+//         console.log(val.path === finalPath,finalPath);
+//         if (val.path === finalPath) {
+//           res.push(item)
+//         }
+//       })
+//     }
+//   }
+//   console.log(res,'00000');
+//   return res
+// }
+function generateRoutes(routes: AppRouteRecordRaw[], basePath = ''): AppRouteRecordRaw[] {
+  const res: AppRouteRecordRaw[] = []
+
+  for (const route of routes) {
+    // skip some route
+    // if (route.meta && route.meta.hidden && !route.meta.showMainRoute) {
+    //   continue
+    // }
+
+    let onlyOneChild = null
+
+    if (route.children && route.children.length === 1 && !route.meta.alwaysShow) {
+      onlyOneChild = isExternal(route.children[0].path)
+        ? route.children[0].path
+        : basePath+route.path+route.children[0].path
+    }
+    let data: any = null
+
+    // 如不需要路由权限，可注释以下逻辑
+    // 权限过滤，通过获取登录信息里面的角色权限，动态的渲染菜单。
+    const list = wsCache.get(appStore.userInfo).routes
+    // 开发者可以根据实际情况进行扩展
+    for (const item of list) {
+      // 通过路径去匹配
+      if (isExternal(item.path) && (onlyOneChild === item.path || route.path === item.path)) {
+        data = Object.assign({}, route)
+      } else {
+        // const routePath = path.resolve(basePath, onlyOneChild || route.path)
+        const routePath = basePath ? basePath  + '/'+route.path:route.path
+        console.log(routePath,item,routePath === item);
+        if (routePath === item) {
+          data = Object.assign({}, route)
         }
-      })
+      }
+    }
+    // 如不需要路由权限，解注释下面一行
+    // data = Object.assign({}, route)
+
+    // recursive child routes
+    if (route.children && data) {
+      data.children = generateRoutes(route.children, route.path)
+    }
+    if (data) {
+      res.push(data as AppRouteRecordRaw)
     }
   }
+  console.log(res)
   return res
 }
 

@@ -6,12 +6,15 @@
         :key="item.path"
       >
         <svg-icon v-if="item.meta.icon" :icon-class="item.meta.icon" class="icon-breadcrumb" />
-        <span v-if="item.redirect==='noredirect'||index==levelList.length-1" class="no-redirect">
-          {{ item.meta.title }}
+        <span>
+      {{item.meta.title}}
         </span>
-        <a v-else @click.prevent="handleLink(item)">
+        <!-- <span v-if="item.redirect==='noredirect'||index==levelList.length-1" class="no-redirect">
           {{ item.meta.title }}
-        </a>
+        </span> -->
+        <!-- <a v-else @click.prevent="handleLink(item)">
+          {{ item.meta.title }}
+        </a> -->
       </BreadcrumbItem>
     </transition-group>
   </Breadcrumb>

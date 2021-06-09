@@ -16,9 +16,9 @@ let cancelAnimationFrame: typeof window.cancelAnimationFrame
     cancelAnimationFrame = window.cancelAnimationFrame
     let prefix
     for (let i = 0; i < prefixes.length; i++) {
-      if (requestAnimationFrame && cancelAnimationFrame) {
-        break
-      }
+      // if (requestAnimationFrame && cancelAnimationFrame) {
+      //   break
+      // }
       prefix = prefixes[i]
       requestAnimationFrame =
         requestAnimationFrame || window[getWindowFrame(prefix + 'RequestAnimationFrame')]

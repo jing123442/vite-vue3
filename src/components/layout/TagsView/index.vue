@@ -30,7 +30,7 @@
       <li @click="closeOthersTags">
         关闭其他
       </li>
-      <li @click="closeAllTags(selectedTag)">
+      <li @click="closeAllTags">
         关闭全部
       </li>
     </ul>

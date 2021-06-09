@@ -107,7 +107,10 @@ section {
 
 body {
   line-height: 1;
-  font-family: "Microsoft YaHei";
+  font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI","Microsoft YaHei","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  
+  -webkit-font-smoothing: antialiased;
+
   font-size: 16px;
   margin:0px;
 }
@@ -145,6 +148,7 @@ li {
 html,
 body {
   width: 100%;
+  color:#323b6a;
 }
 
 body {

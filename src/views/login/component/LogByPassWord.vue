@@ -53,13 +53,8 @@
           message:"请输入6-20位密码"
         }],
       })
-      const routes = [
-        {path:'/first/first',name:'父1',
-        },{path:'/first/seconed',name:'父1',
-        },{
-          path:'/home',name:'temp'
-        }
-        ]
+      const routes = ['/authority','/authority/role','/first','/first/first','/first/seconed','/home']
+
       async function submitForm(): Promise<void> {
         const formWrap = unref(loginForm) as any
         if (!formWrap) return

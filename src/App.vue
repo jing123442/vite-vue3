@@ -14,7 +14,7 @@ export default defineComponent({
 
 <style lang='less'>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "PingFang SC","Segoe UI","Microsoft YaHei","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -7,7 +7,7 @@
       <el-menu
         :default-active="activeMenu"
         :collapse="collapsed"
-        :mode="mode"
+        :mode="'vertical'"
         @select="selectMenu"
       >
         <sider-item
@@ -26,7 +26,8 @@ import { defineComponent, computed, PropType } from 'vue'
 import { useRouter } from 'vue-router'
 import { permissionStore } from '@/store/modules/permission'
 import { appStore } from '@/store/modules/app'
-import type { RouteRecordRaw } from 'vue-router'
+// import type { RouteRecordRaw } from 'vue-router'
+import type { AppRouteRecordRaw } from '@/router/types'
 import SiderItem from './SiderItem.vue'
 import variables from '@/styles/variables.less'
 import { isExternal } from '@/utils/validate'
@@ -42,7 +43,7 @@ export default defineComponent({
   },
   setup() {
     const { currentRoute, push } = useRouter()
-    const routers = computed((): RouteRecordRaw[] => {
+    const routers = computed((): AppRouteRecordRaw[] => {
       return permissionStore.routers
     })
     const activeMenu = computed(() => {
@@ -83,8 +84,10 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+@import  '../../../styles/sider.less';
 .sidebar-container {
   height: 100%;
+  
   @{deep}(.svg-icon) {
     margin-right: 16px;
   }
